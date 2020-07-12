@@ -1,0 +1,63 @@
+{
+  "name": "@fal-works/chainer",
+  "description": "Library for 2D motion graphics.",
+  "version": "0.1.0-alpha",
+  "author": "FAL",
+  "bugs": {
+    "url": "https://github.com/fal-works/chainer/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "rollup": "2.21.0",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "terser": "^4.8.0",
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.6"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "eslintIgnore": [
+    "*.min.js",
+    "*.min.mjs",
+    "types/**/*.ts"
+  ],
+  "files": [
+    "lib",
+    "types"
+  ],
+  "homepage": "https://github.com/fal-works/chainer#readme",
+  "jsnext:main": "lib/chainer.mjs",
+  "keywords": [],
+  "license": "MIT",
+  "main": "lib/chainer.js",
+  "module": "lib/chainer.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fal-works/chainer.git"
+  },
+  "scripts": {
+    "build": "run-s build-tsc build-es build-umd",
+    "build-es": "run-s build-es:rollup build-es:format build-es:minify",
+    "build-es:format": "eslint --fix ./lib/chainer.mjs",
+    "build-es:minify": "terser ./lib/chainer.mjs -c -m -o ./lib/chainer.min.mjs --comments --ecma 6",
+    "build-es:rollup": "rollup -c ./rollup-config-es.js",
+    "build-tsc": "tsc",
+    "build-umd": "run-s build-umd:rollup build-umd:format build-umd:minify",
+    "build-umd:format": "eslint --fix ./lib/chainer.js",
+    "build-umd:minify": "terser ./lib/chainer.js -c -m -o ./lib/chainer.min.js --comments --ecma 6",
+    "build-umd:rollup": "rollup -c ./rollup-config-umd.js",
+    "lint": "eslint --fix ./src/**/*.ts",
+    "lint-js": "eslint --fix ./*.js",
+    "typedoc": "typedoc ./src --excludeNotExported"
+  },
+  "types": "types/chainer.d.ts"
+}

@@ -1,0 +1,10 @@
+.DS_STORE
+.rpt2_cache
+.vscode
+node_modules
+package-lock.json
+yarn.lock
+/lib
+/types
+/doc
+/out
